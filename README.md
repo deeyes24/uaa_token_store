@@ -23,12 +23,15 @@ Output:
 
 `$ uaats -add `
 
-```Output:
+```
+Output:
 Enter UAA URL <replace_with_uaa_url>
 Enter the clientId  <relace_with_client_id>
 Enter the clientSecret <replace_with_client_secret>
 Enter a unique name for the token store <replace_with_a_unique_name>
-Access Token is <OUTPUT_FOR_ACCESS_TOKEN_IS_DISPLAYED_HERE>```
+Access Token is <OUTPUT_FOR_ACCESS_TOKEN_IS_DISPLAYED_HERE>
+```
+
 
 ### Scenario3: After adding tokeninfo
 
@@ -40,7 +43,8 @@ Choose your tokenStore. Enter number b/w 0  -  0
 ### Scenario4: Adding with same name
 ```
 Output: 
-Name <token_store_name> is already taken. Try another unique name. Enter a unique name for the token store```
+Name <token_store_name> is already taken. Try another unique name. Enter a unique name for the token store
+```
 
 ### Scenario5: Adding from a json file.
 
@@ -60,7 +64,8 @@ Usage of uaats:
                                         "clientId": "clientid ",
                                         "clientSecret":"ClientSecret"
                                 }
-                        ]```
+                        ]
+ ```
                         
 
 Using the sample output create file with multiple token store details.
@@ -78,7 +83,11 @@ Choose your tokenStore. Enter number b/w 0  -  4
  1. cf3-ad-app-client 
  2. em-htc-app-client 
  3. em-htc-admin 
- 4. default-app-client-int ```
+ 4. default-app-client-int 
+ ```
  
- After adding you may immediately choose to select the TokenStore from available options or exit
+ After adding you may immediately choose to select the TokenStore from available options or exit.
+ 
+
+Thank You.
  
