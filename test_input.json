@@ -1,0 +1,9 @@
+[
+    {
+        "name" : "dummyName",
+        "uaaURL": "dummy Url",
+        "clientId": "clientid ",
+        "clientSecret":"ClientSecret"
+
+    }
+]
