@@ -17,11 +17,16 @@ A Tool to Create and Refresh OAuthTokens for CF-UAA. UAA Token Store
 If you are running on Mac Machine, then you may choose to run the uaats command directly.
 Otherwise, download the code and build using the below command.
    `$ cd stand_alone`
+   
    `$ go build -o uaats`
+   
 ### CF Plugin Mode
    `$ cd cf_plugin`
+   
    `$ go build -o cf_uaats_plugin`
+   
    `$ cf install-plugin cf_uaats_plugin`
+   
  
 ## How to use the tool:
   
