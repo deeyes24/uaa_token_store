@@ -6,20 +6,22 @@ import (
 	"io/ioutil"
 	"os"
 	"testing"
+
+	token_store "github.com/uaa_token_store/token_store"
 )
 
 func init() {
 
-	Token_Store_File = "/tmp/store.json"
+	token_store.Token_Store_File = "/tmp/store.json"
 
 }
 func TestTokenStore(t *testing.T) {
-	var tStore = TokenStore{}
+	var tStore = token_store.TokenStore{}
 
 	tStore.UaaURL = "https://uaaUrl.com"
 	tStore.ClientID = "clientId"
 	tStore.ClientSecret = "clientSecret"
-	tStore.TokenInfo = TokenInfo{}
+	tStore.TokenInfo = token_store.TokenInfo{}
 
 	if tStore.UaaURL != "https://uaaUrl.com" {
 		t.Error("UAA url mismatch")
@@ -35,12 +37,12 @@ func TestTokenStore(t *testing.T) {
 }
 
 func TestReadWriteToFile(t *testing.T) {
-	var ts = TokenStore{}
+	var ts = token_store.TokenStore{}
 	ts.ClientID = "id"
 	ts.ClientSecret = "secret"
 	ts.Name = "name"
 	ts.UaaURL = "uaa url"
-	ts.TokenInfo = TokenInfo{}
+	ts.TokenInfo = token_store.TokenInfo{}
 	//persistToFile(ts)
 	byteArray, err := json.Marshal(ts)
 	if err != nil {
@@ -52,36 +54,36 @@ func TestReadWriteToFile(t *testing.T) {
 	}
 	var collectionString = "[" + jsonString + "]"
 
-	var tss = make([]TokenStore, 0)
+	var tss = make([]token_store.TokenStore, 0)
 	json.Unmarshal([]byte(collectionString), &tss)
 
 	if "id" != tss[0].ClientID {
 		panic("Error" + tss[0].ClientID)
 	}
 
-	tss = LoadSavedTokenStores()
+	tss = token_store.LoadSavedTokenStores()
 
 	if len(tss) != 0 {
 		t.Error("Should have been 0")
 	}
 
-	tss = AddToken(ts, tss)
+	tss = token_store.AddToken(ts, tss)
 	if len(tss) != 1 {
 		t.Error("Should have been 1")
 	}
 
-	if !NameTaken(tss, "name") {
+	if !token_store.NameTaken(tss, "name") {
 		t.Error("Name should have been taken")
 	}
 
-	os.Remove(Token_Store_File)
-	fmt.Println("Token Store FIle " + Token_Store_File)
+	os.Remove(token_store.Token_Store_File)
+	fmt.Println("Token Store FIle " + token_store.Token_Store_File)
 
 	data, err := ioutil.ReadFile("test_input.json")
 	if err != nil {
 		panic("Error while reading from file " + err.Error())
 	}
-	var tsStores = make([]TokenStore, 0)
+	var tsStores = make([]token_store.TokenStore, 0)
 	err = json.Unmarshal(data, &tsStores)
 	if err != nil {
 		t.Error(err.Error())
