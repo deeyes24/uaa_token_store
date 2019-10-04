@@ -6,14 +6,28 @@ A Tool to Create and Refresh OAuthTokens for CF-UAA. UAA Token Store
   When working with multiple [UAA](https://docs.cloudfoundry.org/uaa/uaa-overview.html) the user would need to request Access Tokens from the UAA [Token endpoint](http://docs.cloudfoundry.org/api/uaa/version/4.21.0/#authorization-code-grant). These tokens have an expiration time. When working with mulitple UAAs it's tiresome to Fetch and Referesh (when expired) the tokens by Posting to the UAA Token Endpoint and constructing Authorization Headers. 
   This would frustrate when in the middle of a debugging session. Suppose you were testing the RESTful Apis either through command line and through a tool like POSTMAN. It would helpful if the tokens were easier to fetch and also automatically refresh upon expiry.
   
+## Usage Modes:
+ Currently there are two ways you can use this tool.
+ 1. Standalone mode.
+ 2. CloudFoundry Plugin Mode
   
 ## How to build:
+
+### Standalone mode
 If you are running on Mac Machine, then you may choose to run the uaats command directly.
 Otherwise, download the code and build using the below command.
+   `$ cd stand_alone`
    `$ go build -o uaats`
+### CF Plugin Mode
+   `$ cd cf_plugin`
+   `$ go build -o cf_uaats_plugin`
+   `$ cf install-plugin cf_uaats_plugin`
  
 ## How to use the tool:
-
+  
+  For standalone mode directly run the [uaats binary for mac](https://github.com/deeyes24/uaa_token_store/tree/master/stand_alone).
+  For CloudFoundry you can run as "cf uaats" followed by below mentioned arguments. You can use this [prebuilt plugin for mac](https://github.com/deeyes24/uaa_token_store/tree/master/cf_plugin)
+  
 ### Scenario1: Inital State
 
 `$ uaats`
